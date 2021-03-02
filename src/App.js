@@ -10,7 +10,6 @@ const AADClientAuth = new PublicClientApplication({
     redirectUri: Config.redirectUri,
     knownAuthorities: ['arfxhomedev.onmicrosoft.com'],
     clientSecret: '.g5WpOIGzWhl2lCvnH_YoR37q-kNN1_8K7'
-    // authorityMetadata: 'https://login.microsoftonline.com/shawmakesmagicgmail.onmicrosoft.com/oauth2/token'
   },
   cache: {
     cacheLocation: "sessionStorage",
@@ -28,12 +27,6 @@ const MainContainer = () => {
       console.log('error :>> ', error);
       throw error
     }
-    console.dir('login :>> ', login);
-    const ftoken = await AADClientAuth.acquireTokenSilent({
-      scopes: ['https://arfxhomedev.onmicrosoft.com/7dad8244-d201-41a9-9fa1-4236025372df/demo.read'],
-      forceRefresh: true
-    });
-    console.dir('login :>> ', ftoken);
   }
   useEffect(() => {
     const accounts = AADClientAuth.getAllAccounts();
