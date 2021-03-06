@@ -6,8 +6,12 @@ import Config from '../ad-config';
 const AADClientAuth = new PublicClientApplication({
   auth: {
     clientId: Config.appId,
-    authority: `https://login.microsoftonline.com/ed3b5426-dadf-4250-bc15-9e6aefe47fd6/oauth2/v2.0/authorize`,
+    authority: Config.authority,
+    // authority: `https://${Config.appId}.b2clogin.com/${Config.appId}.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1`,
+    // authority: `https://login.microsoftonline.com/${Config.appId}.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1_SIGN_UP_SIGN_IN1`,
+    // authority: `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`,
     redirectUri: Config.redirectUri,
+    validateAuthority: false,
     clientSecret: '.g5WpOIGzWhl2lCvnH_YoR37q-kNN1_8K7',
   },
   cache: {
@@ -19,7 +23,7 @@ const MainContainer = () => {
   const login = async () => {
     try {
       const login = await AADClientAuth.loginPopup({
-        scopes: ['user.read'],
+        scopes: Config.scopes,
         // prompt: 'select_account',
       });
     } catch (error) {
@@ -35,6 +39,25 @@ const MainContainer = () => {
           Open File
         </button>
       </div>
+      <h1>Images</h1>
+      <img 
+          src="https://electronapps.blob.core.windows.net/public-blob/bf10ae3f-9536-49d7-b932-f78f91bd3f64%2Fpreview-gif.gif"
+          alt="simple gif"
+          />
+      <video
+          width={500}
+          autoPlay={true}
+          src="https://electronapps.blob.core.windows.net/public-blob/bf10ae3f-9536-49d7-b932-f78f91bd3f64%2Fpreview-video.mp4"
+          alt="simple gif"
+          />
+      <img 
+          src="https://electronapps.blob.core.windows.net/public-blob/bf10ae3f-9536-49d7-b932-f78f91bd3f64%2Fthumbnail.png"
+          alt="simple gif"
+          />
+      <img 
+          src="https://electronapps.blob.core.windows.net/public-blob/bf10ae3f-9536-49d7-b932-f78f91bd3f64%2Fpreview-image.png"
+          alt="simple gif"
+          />
     </div>
   );
 };

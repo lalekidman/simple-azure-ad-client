@@ -7,6 +7,7 @@ const adConfig = {
     `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.onmicrosoft.com/${process.env.REACT_APP_AZURE_AD_CLIENT_ID}/simple-scope`,
     'openid',
     'offline_access',
+    'profile'
   ],
 };
 export default adConfig
