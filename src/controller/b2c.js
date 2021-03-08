@@ -7,7 +7,8 @@ const AADClientAuth = new PublicClientApplication({
     clientId: Config.appId,
     authority: Config.authority,
     redirectUri: Config.redirectUri,
-    knownAuthorities: ['arfxhomedev.onmicrosoft.com'],
+    validateAuthority: false,
+    // knownAuthorities: ['arfxhomedev.onmicrosoft.com'],
     clientSecret: '.g5WpOIGzWhl2lCvnH_YoR37q-kNN1_8K7'
   },
   cache: {

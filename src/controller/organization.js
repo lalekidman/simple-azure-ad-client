@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {PublicClientApplication} from '@azure/msal-browser';
-import Config from '../ad-config';
-
+// import Config from '../ad-config';
+const tenantId = 'ed3b5426-dadf-4250-bc15-9e6aefe47fd6'
 const AADClientAuth = new PublicClientApplication({
   auth: {
-    clientId: Config.appId,
-    authority: Config.authority,
-    // authority: `https://${Config.appId}.b2clogin.com/${Config.appId}.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1`,
-    // authority: `https://login.microsoftonline.com/${Config.appId}.onmicrosoft.com/discovery/v2.0/keys?p=B2C_1_SIGN_UP_SIGN_IN1`,
-    // authority: `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`,
-    redirectUri: Config.redirectUri,
+    clientId: `ceea412b-1a99-4a30-b0a2-d857209d8169`,
+    // authority: Config.authority,
+    // authority: `https://login.microsoftonline.com/${process.env.REACT_APP_AZURE_AD_TENANT_ID}.onmicrosoft.com/oauth2/v2.0/authorize`,
+    // authority: `https://arfxhomedev.b2clogin.com/arfxhomedev.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1/oauth2/v2.0/authorize`,
+    // authority: `https://arfxhomedev.b2clogin.com/arfxhomedev.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1/oauth2/v2.0/authorize`,
+    // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.b2clogin.com/${tenantId}.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1`,
+    // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.microsoftonline.com/organizations`,
+    // authority: `https://login.microsoftonline.com/organizations/v2.0`,
+    authority: `https://login.microsoftonline.com/arfxhomedev.onmicrosoft.com`,
+    redirectUri: `http://localhost:3001`,
     validateAuthority: false,
-    clientSecret: '.g5WpOIGzWhl2lCvnH_YoR37q-kNN1_8K7',
+    clientSecret: 'A6-WwjRuX-mRH5Ic7q_z2pB-2R4BoEu~_o',
   },
   cache: {
     cacheLocation: "sessionStorage",
     storeAuthStateInCookie: false,
   }
 })
+console.log('object SSS');
 const MainContainer = () => {
   const login = async () => {
     try {
       const login = await AADClientAuth.loginPopup({
-        scopes: Config.scopes,
+        scopes: [
+          // 'User.Read',
+          'https://arfxhomedev.onmicrosoft.com/admin-portal/dev.read'
+        ],
+        // scopes: ['https://arfxhomedev.onmicrosoft.com/admin-portal/dev.read'],
         // prompt: 'select_account',
       });
     } catch (error) {
@@ -41,7 +49,7 @@ const MainContainer = () => {
       </div>
       <h1>Images</h1>
       <img 
-          src="https://electronapps.blob.core.windows.net/public-blob/bf10ae3f-9536-49d7-b932-f78f91bd3f64%2Fpreview-gif.gif"
+          src="https://electronapps.blob.core.windows.net/public-blob/758b788c-778b-455a-ad5e-6784bea32eda/preview-gif.gif"
           alt="simple gif"
           />
       <video
