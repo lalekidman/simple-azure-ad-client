@@ -11,7 +11,7 @@ const AADClientAuth = new PublicClientApplication({
     // authority: `https://arfxhomedev.b2clogin.com/arfxhomedev.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1/oauth2/v2.0/authorize`,
     // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.b2clogin.com/${tenantId}.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1`,
     // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.microsoftonline.com/organizations`,
-    // authority: `https://login.microsoftonline.com/organizations/v2.0`,
+    // authority: `https://login.microsoftonline.com/organizations`,
     authority: `https://login.microsoftonline.com/arfxhomedev.onmicrosoft.com`,
     redirectUri: `http://localhost:3001`,
     validateAuthority: false,
@@ -28,7 +28,6 @@ const MainContainer = () => {
     try {
       const login = await AADClientAuth.loginPopup({
         scopes: [
-          // 'User.Read',
           'https://arfxhomedev.onmicrosoft.com/admin-portal/dev.read'
         ],
         // scopes: ['https://arfxhomedev.onmicrosoft.com/admin-portal/dev.read'],
