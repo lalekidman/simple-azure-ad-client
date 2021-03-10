@@ -5,13 +5,6 @@ const tenantId = 'ed3b5426-dadf-4250-bc15-9e6aefe47fd6'
 const AADClientAuth = new PublicClientApplication({
   auth: {
     clientId: `ceea412b-1a99-4a30-b0a2-d857209d8169`,
-    // authority: Config.authority,
-    // authority: `https://login.microsoftonline.com/${process.env.REACT_APP_AZURE_AD_TENANT_ID}.onmicrosoft.com/oauth2/v2.0/authorize`,
-    // authority: `https://arfxhomedev.b2clogin.com/arfxhomedev.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1/oauth2/v2.0/authorize`,
-    // authority: `https://arfxhomedev.b2clogin.com/arfxhomedev.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1/oauth2/v2.0/authorize`,
-    // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.b2clogin.com/${tenantId}.onmicrosoft.com/B2C_1_SIGN_UP_SIGN_IN1`,
-    // authority: `https://${process.env.REACT_APP_AZURE_AD_ACCOUNT_NAME}.microsoftonline.com/organizations`,
-    // authority: `https://login.microsoftonline.com/organizations`,
     authority: `https://login.microsoftonline.com/arfxhomedev.onmicrosoft.com`,
     redirectUri: `http://localhost:3001`,
     validateAuthority: false,
